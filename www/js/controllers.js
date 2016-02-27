@@ -86,8 +86,9 @@ angular.module('conFusion.controllers', [])
             };
         }])
 
-        .controller('ContactController', ['$scope', function($scope) {
+        .controller('ContactController', ['$scope', 'baseURL', function($scope, baseURL) {
 
+            $scope.baseURL = baseURL;
             $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
             
             var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
@@ -178,8 +179,9 @@ angular.module('conFusion.controllers', [])
                         $scope.promotion = menuFactory.getPromotion().get({id:0});
       }])
 
-        .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
+        .controller('AboutController', ['$scope', 'corporateFactory', 'baseURL', function($scope, corporateFactory, baseURL) {
             
+                    $scope.baseURL = baseURL;
                     $scope.leaders = corporateFactory.query();
                     console.log($scope.leaders);
             
